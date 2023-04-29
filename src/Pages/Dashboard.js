@@ -5,6 +5,7 @@ import Home from './Home';
 import UserProfile from './UserProfile';
 import Workouts from './Workouts';
 import LowerBody from './Workouts/LowerBody';
+import MacroCalculator from './MacroCalculator';
 
 //This is the main page we reach upon login
 //Routes is where we define the route a user can navigate to using react-router-dom, so everything will render below the navbar making it a single page application
@@ -19,6 +20,7 @@ export default function Dashboard() {
                 <Route path="/workouts/*" element={<Workouts/>}/>
                 <Route path = "/workouts/lower-body" element = {<LowerBody/>}/>
                 <Route path = "/upload-video" element = {<UploadVideo/>}/>
+                <Route path = "/macro-calculator" element = {<MacroCalculator/>}/>
             </Routes>
             </div>
         </div>

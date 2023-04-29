@@ -36,6 +36,7 @@ export default function Login() {
                 <TextField label='Password' value={password} type='password' onChange={(e) => setPassword(e.target.value)} style={{ display: 'block' }} />
                 <Button onClick={signIn} style={{ display: 'block', width: '100%', paddingTop: '10px' }}>Login</Button>
                 <Typography onClick = {() => navigate('register')} style = {{cursor: 'pointer'}}>Not registered? Sign up here</Typography>
+                <Typography onClick = {() => navigate('forgot-password')} style = {{cursor: 'pointer'}}>Forogot password? Click here</Typography>
             </div>
         </div>
     )
