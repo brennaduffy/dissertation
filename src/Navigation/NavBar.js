@@ -12,13 +12,13 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import { useNavigate } from 'react-router-dom';
-import { FitnessCenter, Person } from '@mui/icons-material';
+import { FitnessCenter } from '@mui/icons-material';
 import { signOut } from 'firebase/auth';
 import { auth, db, storage } from '../Firebase/config';
 import { getDownloadURL, ref } from 'firebase/storage';
 import { doc, getDoc } from 'firebase/firestore';
 
-const pages = ['workouts', 'upload video'];
+let pages = [{ text: 'Workouts', link: 'workouts' }, { text: 'Macro Calculator', link: 'macro-calculator' }, { text: 'Workout Log', link: 'workout-log' }, { text: 'Recipes', link: 'recipes' }];
 const settings = ['Profile', 'Logout'];
 
 //This is our navigation bar which is available on every page except for login and register and allows us to move between pages, see our profile picture and logout
@@ -35,6 +35,9 @@ export default function NavBar() {
     if (currentUser) {
       getDoc(doc(db, 'users', currentUser)).then((docSnapshot) => {
         let profilePicPath = 'profilePics/' + currentUser + '/' + docSnapshot.data().profilePic;
+        if(docSnapshot.data().admin) {
+          pages.push({ text: 'Upload Video', link: 'upload-video' })
+        }
         getDownloadURL(ref(storage, profilePicPath))
           .then((url) => {
             setProfilePic(url);
@@ -54,11 +57,7 @@ export default function NavBar() {
   };
   //This function is ran when navigating using the navbar
   function handleCloseNavMenu(page) {
-    if(page !== 'upload video') {
-      navigate(page);
-    } else {
-      navigate('upload-video')
-    }
+    navigate(page.link);
     setAnchorElNav(null);
   };
   //this function is ran when using the user menu e.g. profile and logout
@@ -134,8 +133,8 @@ export default function NavBar() {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={() => handleCloseNavMenu(page)}>
-                  <Typography textAlign="center">{page}</Typography>
+                <MenuItem key={page.text} onClick={() => handleCloseNavMenu(page)}>
+                  <Typography textAlign="center">{page.text}</Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -162,11 +161,11 @@ export default function NavBar() {
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
               <Button
-                key={page}
+                key={page.text}
                 onClick={() => handleCloseNavMenu(page)}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
-                {page}
+                {page.text}
               </Button>
             ))}
           </Box>

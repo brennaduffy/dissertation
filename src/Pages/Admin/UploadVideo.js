@@ -52,10 +52,7 @@ export default function UploadVideo() {
                 <MenuItem value={'Cardio'}>Cardio</MenuItem>
                 <MenuItem value={'LowerBody'}>Lower Body</MenuItem>
                 <MenuItem value={'UpperBody'}>Upper body</MenuItem>
-                <MenuItem value={'Back'}>Back</MenuItem>
-                <MenuItem value={'BicepsTriceps'}>Biceps & Triceps</MenuItem>
-                <MenuItem value={'Glutes'}>Glutes</MenuItem>
-                <MenuItem value={'Quads'}>Quads</MenuItem>
+                <MenuItem value={'Core'}>Back</MenuItem>
             </Select>
         </FormControl>
 

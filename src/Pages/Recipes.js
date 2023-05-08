@@ -1,8 +1,8 @@
 import { Box, Card, CardActionArea, CardContent, CardMedia, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
-//This page renders all our workout types as tiles and allows us to navigate to them
-export default function Workouts() {
+//This page renders all our recipes as tiles and allows us to navigate to them
+export default function Recipes() {
     const navigate = useNavigate();
     function navigateTo(page) {
         navigate(page);
@@ -18,64 +18,65 @@ export default function Workouts() {
             }}
         >
             <Card sx={{ maxWidth: '50vw' }}>
-                <CardActionArea onClick={() => navigateTo('cardio')}>
+                <CardActionArea onClick={() => navigateTo('frozen-berry-yoghurt')}>
                     <CardMedia
                         sx={{ height: 250 }}
-                        image="/images/cardio.jpg"
-                        title="Cardio workout"
+                        image="/images/Frozen-berry-yoghurt-thumbnail.jpg"
+                        title="Frozen Berry Yoghurt Cups"
                     />
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="div">
-                            Cardio
+                            Frozen Berry Yoghurt Cups
                         </Typography>
                     </CardContent>
                 </CardActionArea>
             </Card>
 
             <Card sx={{ maxWidth: '50vw' }}>
-                <CardActionArea onClick={() => navigateTo('lower-body')}>
+                <CardActionArea onClick={() => navigateTo('sticky-sesame-chicken')}>
                     <CardMedia
                         sx={{ height: 250 }}
-                        image="/images/lowerbody.jpg"
-                        title="Lower body workout"
+                        image="/images/Sticky-sesame-chicken-thumbnail.jpg"
+                        title="Sticky Sesame Chicken"
                     />
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="div">
-                            Lower body
+                            Sticky Sesame Chicken
                         </Typography>
                     </CardContent>
                 </CardActionArea>
             </Card>
 
             <Card sx={{ maxWidth: '50vw' }}>
-                <CardActionArea onClick={() => navigateTo('upper-body')}>
+                <CardActionArea onClick={() => navigateTo('vegan-beetroot-burgers')}>
                     <CardMedia
                         sx={{ height: 250 }}
-                        image="/images/upperbody.jpg"
-                        title="Upper body workout"
+                        image="/images/Vegan-beetroot-burgers-thumbnail.jpg"
+                        title="Vegan Beetroot Burgers"
                     />
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="div">
-                            Upper body
+                        Vegan Beetroot Burgers
                         </Typography>
                     </CardContent>
                 </CardActionArea>
             </Card>
 
             <Card sx={{ maxWidth: '50vw' }}>
-                <CardActionArea onClick={() => navigateTo('core')}>
+                <CardActionArea onClick={() => navigateTo('broccoli-cheese-muffins')}>
                     <CardMedia
                         sx={{ height: 250 }}
-                        image="/images/core.jpg"
-                        title="Core workout"
+                        image="/images/Broccoli-cheese-muffins-thumbnail.jpg"
+                        title="Broccoli Cheese Muffins"
                     />
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="div">
-                            Core
+                        Broccoli Cheese Muffins
                         </Typography>
                     </CardContent>
                 </CardActionArea>
             </Card>
+
         </Box>
     )
 }

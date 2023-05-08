@@ -4,8 +4,8 @@ import { useEffect, useState } from "react";
 import PropTypes from 'prop-types';
 import { getDownloadURL, listAll, ref } from "firebase/storage";
 import { storage } from "../../Firebase/config";
-//This is the page for lower body workouts where we can tab between beginner intermediate and advanced workouts and there will be videos for each
-export default function LowerBody() {
+//This is the page for core workouts where we can tab between beginner intermediate and advanced workouts and there will be videos for each
+export default function Core() {
     const [value, setValue] = useState(0);
     const [beginnerVideo, setBeginnerVideo] = useState();
     const [intermediateVideo, setIntermediateVideo] = useState();
@@ -38,7 +38,7 @@ export default function LowerBody() {
 
     function getVideo(level,setVideoURL) {
         //This function uses the firebase api to get the url of the video we are looking and sets the url to be used in the video component
-        const listRef = ref(storage, 'workoutVideos/LowerBody/' + level)
+        const listRef = ref(storage, 'workoutVideos/Core/' + level)
             listAll(listRef)
                 .then((res) => {
                     getDownloadURL(res.items[0])

@@ -74,8 +74,10 @@ export default function MacroCalculator() {
     }
 
     return (
-        <>
-            <FormControl fullWidth>
+        <div style = {{display: 'flex', justifyContent: 'center', paddingLeft: '20%', paddingRight: '20%', flexDirection: 'column'}}>
+            <Typography variant = 'h3' textAlign='center
+            '>Calculate your Macros</Typography>
+            <FormControl fullWidth disabled={emptyFieldFlag && !gender} style ={{paddingBottom: '10px'}}>
                 <InputLabel id="gender">Gender</InputLabel>
                 <Select
                     labelId="gender"
@@ -88,11 +90,11 @@ export default function MacroCalculator() {
                 </Select>
             </FormControl>
 
-            <TextField label='Age' type='number' value={age} onChange={(e) => setAge(e.target.value)} style={{ display: 'block' }} />
-            <TextField label='Weight (kg)' type='number' value={weight} onChange={(e) => setWeight(e.target.value)} style={{ display: 'block' }} />
-            <TextField label='Height (cm)' type='number' value={height} onChange={(e) => setHeight(e.target.value)} style={{ display: 'block' }} />
+            <TextField label='Age' type='number' value={age} onChange={(e) => setAge(e.target.value)}  disabled={emptyFieldFlag && !age} fullWidth style ={{paddingBottom: '10px'}}/>
+            <TextField label='Weight (kg)' type='number' value={weight} onChange={(e) => setWeight(e.target.value)}  disabled={emptyFieldFlag && !weight} fullWidth style ={{paddingBottom: '10px'}}/>
+            <TextField label='Height (cm)' type='number' value={height} onChange={(e) => setHeight(e.target.value)}  disabled={emptyFieldFlag && !height} fullWidth style ={{paddingBottom: '10px'}}/>
 
-            <FormControl fullWidth>
+            <FormControl fullWidth disabled={emptyFieldFlag && !activityLevel} style ={{paddingBottom: '10px'}}>
                 <InputLabel id="activity">Activity level</InputLabel>
                 <Select
                     labelId="activity"
@@ -108,7 +110,7 @@ export default function MacroCalculator() {
                 </Select>
             </FormControl>
 
-            <FormControl fullWidth>
+            <FormControl fullWidth disabled={emptyFieldFlag && !goal}>
                 <InputLabel id="goal">Goal</InputLabel>
                 <Select
                     labelId="goal"
@@ -124,11 +126,13 @@ export default function MacroCalculator() {
 
             <Button onClick={calculateMacros}>Calculate macros</Button>
 
-            {calories && (<><Typography>Calories per day should be: {calories}</Typography>
-                <Typography>Carbs per day should be: {(calories * 0.4) / 4}g</Typography>
-                <Typography>Protein per day should be: {(calories * 0.3) / 4}g</Typography>
-                <Typography>Fats per day should be: {(calories * 0.3) / 9}g</Typography>
-            </>)}
-        </>
+            {calories && (<div style = {{textAlign: 'center'}}>
+            <Typography variant='h5'>Your macronutrients are as follows:</Typography>
+            <Typography>Calories per day should be: {calories}</Typography>
+                <Typography>Carbs per day should be: {((calories * 0.4) / 4).toFixed(0)}g</Typography>
+                <Typography>Protein per day should be: {((calories * 0.3) / 4).toFixed(0)}g</Typography>
+                <Typography>Fats per day should be: {((calories * 0.3) / 9).toFixed(0)}g</Typography>
+            </div>)}
+        </div>
     )
 }

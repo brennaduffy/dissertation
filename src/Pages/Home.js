@@ -36,15 +36,15 @@ export default function Home() {
             </Card>
 
             <Card sx={{ maxWidth: '50vw' }}>
-                <CardActionArea onClick={() => navigateTo('lower-body')}>
+                <CardActionArea onClick={() => navigateTo('recipes')}>
                     <CardMedia
                         sx={{ height: 250 }}
-                        image="/images/lowerbody.jpg"
-                        title="Latest news"
+                        image="/images/recipes.jpg"
+                        title="Recipes"
                     />
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="div">
-                            Latest news
+                            Recipes
                         </Typography>
                     </CardContent>
                 </CardActionArea>
